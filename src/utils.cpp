@@ -1,5 +1,6 @@
 #include "utils.hpp"
 
+#include <cctype>
 #include <sstream>
 #include <string>
 #include <vector>
@@ -15,7 +16,7 @@ std::vector<std::string> StringUtils::split(const std::string& s) {
 bool StringUtils::isPositiveUInt(const std::string& s) {
     if (s.empty()) return false;
     for (char c : s)
-        if (!isdigit(c)) return false;
+        if (!std::isdigit(c)) return false;
     try {
         return std::stoul(s) > 0;
     } catch (...) {
@@ -26,15 +27,16 @@ bool StringUtils::isPositiveUInt(const std::string& s) {
 bool StringUtils::isValidClientName(const std::string& s) {
     if (s.empty()) return false;
     for (char c : s) {
-        if (isupper(c)) return false;
-        if (!(isalnum(c) || c == '_' || c == '-')) return false;
+        if (std::isupper(c)) return false;
+        if (!(std::isalnum(c) || c == '_' || c == '-')) return false;
     }
     return true;
 }
 
 bool TimeParser::parse(const std::string& s, int32_t* minutes) {
     if (s.size() != 5 || s[2] != ':') return false;
-    if (!isdigit(s[0]) || !isdigit(s[1]) || !isdigit(s[3]) || !isdigit(s[4]))
+    if (!std::isdigit(s[0]) || !std::isdigit(s[1]) || !std::isdigit(s[3]) ||
+        !std::isdigit(s[4]))
         return false;
 
     int32_t h = (s[0] - '0') * 10 + (s[1] - '0');

@@ -37,7 +37,7 @@ class ClubEngine {
 
    private:
     struct Client {
-        ssize_t table = -1;
+        int32_t table = -1;
         int32_t start_time = -1;
     };
 
