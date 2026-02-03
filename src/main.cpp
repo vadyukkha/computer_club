@@ -25,7 +25,7 @@ int main(int argc, char **argv) {
     std::string line;
     std::vector<std::string> file_data;
     while (std::getline(input_file, line)) {
-        if (!line.empty() && line.back() == '\r') // remove CR
+        if (!line.empty() && line.back() == '\r')  // remove CR
             line.pop_back();
         file_data.push_back(line);
     }
