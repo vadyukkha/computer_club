@@ -9,7 +9,7 @@
 #include "utils.hpp"
 
 static std::string formatTime(int32_t t) {
-    char buf[6];
+    char buf[16];
     snprintf(buf, sizeof(buf), "%02d:%02d", t / 60, t % 60);
     return buf;
 }
